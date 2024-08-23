@@ -103,7 +103,7 @@ alpha.setup(dashboard.opts)
 -- setup mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = {"lua_ls", "zls", "intelephense"}
+  ensure_installed = {"lua_ls", "zls", "intelephense", "snyk_ls"}
 })
 
 -- setup nvim-tree
@@ -116,6 +116,21 @@ require("nvim-tree").setup({
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.zls.setup({})
+
+
+lspconfig.snyk_ls.setup({
+  init_options = {
+    activateSnykCode = "true",
+    activateSnykIac = "true",
+    cliPath = "/usr/local/snyk-linux",
+    path = "/usr/local/",
+    token = "<token>",
+    trustedFolders = {"/your/trusted/directories/speperated/by/commas"}, 
+  }
+
+ 
+})
+
 
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
