@@ -33,6 +33,22 @@ local plugins = {
   {'goolord/alpha-nvim',
     dependencies = {'nvim-tree/nvim-web-devicons'}
   },
+  {
+    'nvim-lualine/lualine.nvim',
+     dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
+  {'hrsh7th/nvim-cmp'},
+  {'hrsh7th/cmp-nvim-lsp'},
+  {
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!).
+	build = "make install_jsregexp"
+  },
+  {'saadparwaiz1/cmp_luasnip'},
+  {'rafamadriz/friendly-snippets'},
+
   {'nvim-tree/nvim-tree.lua',
     dependecies = {'nvim-tree/nvim-web-devicons'}
   }
@@ -73,6 +89,39 @@ vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>')
 
 -- setup webdev-icons
 require("nvim-web-devicons").setup()
+
+-- setup lualine
+require('lualine').setup({
+  options = { theme = 'wombat' },
+  sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
+})
+
+--Configure autocomplete
+local cmp = require("cmp")
+require("luasnip.loaders.from_vscode").lazy_load()
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-o>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },{
+    { name = 'buffer' },
+  }),
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- setup alpha
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.startify")
@@ -114,22 +163,43 @@ require("nvim-tree").setup({
 })
 -- setup lspconfig
 local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({})
+lspconfig.lua_ls.setup({
+  capabilities = capabilities
+})
+
 lspconfig.zls.setup({})
 
+--local function on_attach(client, bufnr)
+--  print("snyk-lsp attached to buffer:", bufnr)
+  -- Other on_attach setup
+--end
 
-lspconfig.snyk_ls.setup({
+-- Configure snyk
+lspconfig.snyk_ls.setup{
   init_options = {
     activateSnykCode = "true",
     activateSnykIac = "true",
     cliPath = "/usr/local/snyk-linux",
     path = "/usr/local/",
-    token = "<token>",
-    trustedFolders = {"/your/trusted/directories/speperated/by/commas"}, 
-  }
-
- 
-})
+    token = "<snyk-token",
+    trustedFolders = {"your/project/directories"}
+  },
+  filetypes = {
+    "go",
+    "gomod",
+    "javascript",
+    "typescript",
+    "json",
+    "python",
+    "requirements",
+    "helm",
+    "yaml",
+    "terraform", 
+    "terraform-vars",
+    "php"
+  },
+  --on_attach=on_attach
+}
 
 
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
