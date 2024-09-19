@@ -81,6 +81,18 @@ require("harpoon").setup({
     tabline_suffix = "   ",
   }
 })
+
+local ui = require("harpoon.ui") --doing this to navigate to files without bringing up menu
+
+vim.keymap.set("n", "<leader>h1", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<leader>h2", function() ui.nav_file(2) end)
+vim.keymap.set("n", "<leader>h3", function() ui.nav_file(3) end)
+vim.keymap.set("n", "<leader>h4", function() ui.nav_file(4) end)
+vim.keymap.set("n", "<leader>h5", function() ui.nav_file(5) end)
+vim.keymap.set("n", "<leader>h6", function() ui.nav_file(6) end)
+vim.keymap.set("n", "<leader>h7", function() ui.nav_file(7) end)
+vim.keymap.set("n", "<leader>h8", function() ui.nav_file(8) end)
+vim.keymap.set("n", "<leader>h9", function() ui.nav_file(9) end)
 require('telescope').load_extension('harpoon')
 vim.keymap.set('n', 'hx', require('harpoon.mark').add_file)
 vim.keymap.set('n', 'hn', require('harpoon.ui').nav_next)
