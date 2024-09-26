@@ -223,3 +223,4 @@ require("catppuccin").setup({
   transparent_background = true
 })
 vim.cmd.colorscheme "catppuccin"
+vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
