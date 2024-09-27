@@ -93,6 +93,9 @@ vim.keymap.set("n", "<leader>h6", function() ui.nav_file(6) end)
 vim.keymap.set("n", "<leader>h7", function() ui.nav_file(7) end)
 vim.keymap.set("n", "<leader>h8", function() ui.nav_file(8) end)
 vim.keymap.set("n", "<leader>h9", function() ui.nav_file(9) end)
+
+vim.keymap.set("n", "<leader>H", function() ui.toggle_quick_menu() end)
+
 require('telescope').load_extension('harpoon')
 vim.keymap.set('n', 'hx', require('harpoon.mark').add_file)
 vim.keymap.set('n', 'hn', require('harpoon.ui').nav_next)
