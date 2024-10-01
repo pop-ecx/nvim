@@ -227,3 +227,15 @@ require("catppuccin").setup({
 })
 vim.cmd.colorscheme "catppuccin"
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
+
+vim.highlight.on_yank({higroup="YankHighlight", timeout=200})
+-- Highlight group for yanked text
+vim.cmd("highlight YankHighlight guibg=#5b3a29 guifg=#ffffff")
+
+-- Autocommand for highlighting yanked text
+vim.api.nvim_exec([[
+    augroup HighlightYank
+        autocmd!
+        autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup="YankHighlight", timeout=200})
+    augroup END
+]], false)
