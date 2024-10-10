@@ -51,7 +51,8 @@ local plugins = {
 
   {'nvim-tree/nvim-tree.lua',
     dependecies = {'nvim-tree/nvim-web-devicons'}
-  }
+  },
+  {'lewis6991/gitsigns.nvim'}
 
 }
 local opts = {}
@@ -110,6 +111,9 @@ require('lualine').setup({
   options = { theme = 'wombat' },
   sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
 })
+
+--Setup gitsigns
+require('gitsigns').setup()
 
 --Configure autocomplete
 local cmp = require("cmp")
