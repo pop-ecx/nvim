@@ -52,7 +52,16 @@ local plugins = {
   {'nvim-tree/nvim-tree.lua',
     dependecies = {'nvim-tree/nvim-web-devicons'}
   },
-  {'lewis6991/gitsigns.nvim'}
+  {'lewis6991/gitsigns.nvim'},
+  {'folke/tokyonight.nvim',
+    opts = {
+    transparent = true,
+    styles = {
+      sidebars = "transparent",
+      floats = "transparent",
+    },
+  },
+}
 
 }
 local opts = {}
@@ -108,7 +117,7 @@ require("nvim-web-devicons").setup()
 
 -- setup lualine
 require('lualine').setup({
-  options = { theme = 'wombat' },
+  options = { theme = 'tokyonight' },
   sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
 })
 
@@ -226,10 +235,10 @@ vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
 vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
 
 -- setup catppuccin
-require("catppuccin").setup({
-  transparent_background = true
-})
-vim.cmd.colorscheme "catppuccin"
+--require("catppuccin").setup({
+  --transparent_background = true
+--})
+vim.cmd.colorscheme "tokyonight" --was initially catpuccin
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
 
 vim.highlight.on_yank({higroup="YankHighlight", timeout=200})
