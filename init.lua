@@ -191,6 +191,9 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+vim.keymap.set('n', '<leader>nto', ':NvimTreeOpen<CR>')
+vim.keymap.set('n', '<leader>ntc', ':NvimTreeOpen<CR>')
+
 -- setup lspconfig
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({
