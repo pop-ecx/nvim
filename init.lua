@@ -3,6 +3,7 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
+vim.cmd("set number")
 vim.g.mapleader = " "
 vim.opt.scrolloff = 10
 
@@ -31,7 +32,7 @@ local plugins = {
   {'williamboman/mason.nvim'},
   {'williamboman/mason-lspconfig.nvim'},
   {'neovim/nvim-lspconfig'},
-  --{'nvim-tree/nvim-web-devicons'},
+  {'nvim-tree/nvim-web-devicons'},
   {'goolord/alpha-nvim',
     dependencies = {'nvim-tree/nvim-web-devicons'}
   },
@@ -50,9 +51,24 @@ local plugins = {
   },
   {'saadparwaiz1/cmp_luasnip'},
   {'rafamadriz/friendly-snippets'},
-
   {'nvim-tree/nvim-tree.lua',
     dependecies = {'nvim-tree/nvim-web-devicons'}
+  },
+  {'EmranMR/tree-sitter-blade'},
+  {
+  'stevearc/oil.nvim',
+  ---@module 'oil'
+  ---@type oil.SetupOpts
+  opts = {},
+  -- Optional dependencies
+  -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
+  {
+    "cuducos/yaml.nvim", 
+    dependecies = {
+      "nvim-treesitter/nvim-treesitter"
+    }
   },
   {'lewis6991/gitsigns.nvim'},
   {'folke/tokyonight.nvim',
@@ -63,8 +79,7 @@ local plugins = {
       floats = "transparent",
     },
   },
-}
-
+   }
 }
 local opts = {}
 require("lazy").setup(plugins, opts)
@@ -72,13 +87,25 @@ require("lazy").setup(plugins, opts)
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) 
--- nsetup treesitter
+-- setup treesitter
 local config = require("nvim-treesitter.configs")
 config.setup({
-  ensure_installed = {"lua", "javascript", "python", "php"},
+  ensure_installed = {"lua", "javascript", "python", "php", "yaml", "json", "css", "html"},
   highlight = { enable = true },
   indent = {enable = true}
 })
+
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_config.blade = {
+          install_info = {
+              url = "https://github.com/EmranMR/tree-sitter-blade",
+              files = {"src/parser.c"},
+              branch = "main",
+          },
+          filetype = "blade"
+      }
+
 -- setup harpoon
 require("harpoon").setup({
   global_settings = {
@@ -94,7 +121,7 @@ require("harpoon").setup({
   }
 })
 
-local ui = require("harpoon.ui") --doing this to navigate to files without bringing up menu
+local ui = require("harpoon.ui")
 
 vim.keymap.set("n", "<leader>h1", function() ui.nav_file(1) end)
 vim.keymap.set("n", "<leader>h2", function() ui.nav_file(2) end)
@@ -116,12 +143,6 @@ vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>')
 
 -- setup webdev-icons
 require("nvim-web-devicons").setup()
-
--- setup lualine
-require('lualine').setup({
-  options = { theme = 'tokyonight' },
-  sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
-})
 
 --Setup gitsigns
 require('gitsigns').setup()
@@ -182,7 +203,7 @@ alpha.setup(dashboard.opts)
 -- setup mason
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = {"lua_ls", "zls", "intelephense", "snyk_ls"}
+  ensure_installed = {"lua_ls", "zls"}
 })
 
 -- setup nvim-tree
@@ -194,63 +215,71 @@ require("nvim-tree").setup({
 vim.keymap.set('n', '<leader>nto', ':NvimTreeOpen<CR>')
 vim.keymap.set('n', '<leader>ntc', ':NvimTreeOpen<CR>')
 
--- setup lspconfig
-local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup({
-  capabilities = capabilities
+-- setup webdev-icons
+require("nvim-web-devicons").setup()
+
+-- setup lualine
+require('lualine').setup({
+  options = { theme = 'tokyonight' },
+  sections = { lualine_c = { "os.date('%a')", 'data', "require'lsp-status'.status()" } }
 })
 
+-- setup gitsigns
+require('gitsigns').setup()
+
+--Configure autocomplete
+local cmp = require("cmp")
+require("luasnip.loaders.from_vscode").lazy_load()
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-o>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },{
+    { name = 'buffer' },
+  }),
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- setup oil
+require("oil").setup()
+
+-- setup lspconfig
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup({})
 lspconfig.zls.setup({})
-
---local function on_attach(client, bufnr)
---  print("snyk-lsp attached to buffer:", bufnr)
-  -- Other on_attach setup
---end
-
--- Configure snyk
-lspconfig.snyk_ls.setup{
-  init_options = {
-    activateSnykCode = "true",
-    activateSnykIac = "true",
-    cliPath = "/usr/local/snyk-linux",
-    path = "/usr/local/",
-    token = "<snyk-token",
-    trustedFolders = {"your/project/directories"}
-  },
-  filetypes = {
-    "go",
-    "gomod",
-    "javascript",
-    "typescript",
-    "json",
-    "python",
-    "requirements",
-    "helm",
-    "yaml",
-    "terraform", 
-    "terraform-vars",
-    "php"
-  },
-  --on_attach=on_attach
-}
-
+lspconfig.phpactor.setup({})
+lspconfig.yamlls.setup({})
+lspconfig.dockerls.setup({})
 
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
 vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
 
 -- setup catppuccin
---require("catppuccin").setup({
-  --transparent_background = true
---})
-vim.cmd.colorscheme "tokyonight" --was initially catpuccin
-vim.opt.termguicolors = true
+require("catppuccin").setup({
+  transparent_background = true
+})
 
+vim.cmd.colorscheme "tokyonight" -- was catpuccin initially
+vim.opt.termguicolors = true
+-- remap keybinding for yanking to clipboard
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
 
 vim.highlight.on_yank({higroup="YankHighlight", timeout=200})
 -- Highlight group for yanked text
-vim.cmd("highlight YankHighlight guibg=#5b3a29 guifg=#ffffff")
+vim.cmd("highlight YankHighlight guibg=#808080 guifg=#ffffff")
 
 -- Autocommand for highlighting yanked text
 vim.api.nvim_exec([[
