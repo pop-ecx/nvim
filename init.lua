@@ -241,6 +241,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
   --transparent_background = true
 --})
 vim.cmd.colorscheme "tokyonight" --was initially catpuccin
+vim.opt.termguicolors = true
+
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
 
 vim.highlight.on_yank({higroup="YankHighlight", timeout=200})
