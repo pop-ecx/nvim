@@ -4,6 +4,7 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
 vim.cmd("set number")
+vim.cmd("set nolist")
 vim.g.mapleader = " "
 vim.opt.scrolloff = 10
 vim.opt.cursorline = true
