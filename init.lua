@@ -6,6 +6,7 @@ vim.cmd("set relativenumber")
 vim.cmd("set number")
 vim.g.mapleader = " "
 vim.opt.scrolloff = 10
+vim.opt.cursorline = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
