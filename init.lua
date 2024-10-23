@@ -146,7 +146,9 @@ vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>')
 require("nvim-web-devicons").setup()
 
 --Setup gitsigns
-require('gitsigns').setup()
+require('gitsigns').setup({
+  current_line_blame = true
+})
 
 --Configure autocomplete
 local cmp = require("cmp")
