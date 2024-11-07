@@ -289,8 +289,13 @@ require("catppuccin").setup({
   transparent_background = true
 })
 
+-- Keymap to start and stop lsp
+vim.api.nvim_set_keymap('n', '<leader>lss', ':LspStart<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>lst', ':LspStop<CR>', { noremap = true, silent = true })
+
 vim.cmd.colorscheme "tokyonight" -- was catpuccin initially
 vim.opt.termguicolors = true
+
 -- remap keybinding for yanking to clipboard
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
 vim.cmd [[highlight Cursor guifg=#FF0000 guibg=#FFFFFF]]
