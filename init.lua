@@ -8,6 +8,7 @@ vim.cmd("set nolist")
 vim.g.mapleader = " "
 vim.opt.scrolloff = 10
 vim.opt.cursorline = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -72,7 +73,18 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter"
     }
   },
-  {'lewis6991/gitsigns.nvim'},
+  {'lewis6991/gitsigns.nvim',
+  opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+  },
+
   {'folke/tokyonight.nvim',
     opts = {
     transparent = true,
@@ -258,6 +270,7 @@ cmp.setup({
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- setup oil
 require("oil").setup()
+-- vim.keymap.set("n", "-", oil.toggle_float)
 
 -- setup lspconfig
 local lspconfig = require("lspconfig")
@@ -280,6 +293,7 @@ vim.cmd.colorscheme "tokyonight" -- was catpuccin initially
 vim.opt.termguicolors = true
 -- remap keybinding for yanking to clipboard
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
+vim.cmd [[highlight Cursor guifg=#FF0000 guibg=#FFFFFF]]
 
 vim.highlight.on_yank({higroup="YankHighlight", timeout=200})
 -- Highlight group for yanked text
