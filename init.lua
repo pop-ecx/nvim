@@ -212,9 +212,7 @@ dashboard.section.header.val = {
    [[' ███████▄░░░░░░░░░░░▄███████ ']],
    [[' ██████████▄▄▄▄▄▄▄██████████ ']],
 }
-local function footer()
- return "Be yourself unless you can be batman. Then always be batman..."
-end
+dashboard.section.header.opts.position = "center"
 alpha.setup(dashboard.opts)
 -- setup mason
 require("mason").setup()
