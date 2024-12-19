@@ -1,4 +1,4 @@
 # nvim-config
-Could've split the init.lua file into different files but I love having everything in one place.
+Finally got the time to modularize everything.
 
-> I've changed my mind. Considering Modularization of my file :joy:
+If you want to see my old init.lua, go to the defunct branch
