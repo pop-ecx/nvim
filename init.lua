@@ -57,6 +57,10 @@ local plugins = {
   {'nvim-tree/nvim-tree.lua',
     dependecies = {'nvim-tree/nvim-web-devicons'}
   },
+  {'pop-ecx/sigma_picker.nvim'},
+  {'zbirenbaum/copilot.lua',
+    cmd = "Copilot",
+    event = "InsertEnter"},
   {'EmranMR/tree-sitter-blade'},
   {
   'stevearc/oil.nvim',
@@ -99,8 +103,8 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 local builtin = require("telescope.builtin")
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) 
+vim.keymap.set('n', '<C-p>', function() builtin.find_files({hidden=true}) end)
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 -- setup treesitter
 local config = require("nvim-treesitter.configs")
 config.setup({
@@ -120,6 +124,13 @@ parser_config.blade = {
           filetype = "blade"
       }
 
+-- setup sigma_picker
+local spick = require("sigma_picker")
+spick.setup({})
+vim.keymap.set('n', '<leader>sp', spick.sigma_picker, {noremap = true, silent = true})
+
+--setup copilot
+require("copilot").setup({})
 -- setup harpoon
 require("harpoon").setup({
   global_settings = {
@@ -266,17 +277,64 @@ cmp.setup({
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- setup oil
 require("oil").setup()
--- vim.keymap.set("n", "-", oil.toggle_float)
+vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- setup lspconfig
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.zls.setup({})
 lspconfig.phpactor.setup({})
-lspconfig.yamlls.setup({})
+-- lspconfig.pylyzer.setup({})
 lspconfig.dockerls.setup({})
+
+--require'lspconfig'.sigma_ls.setup{
+--    cmd = {"sigma_ls"},
+--    filetypes = {"yaml"},
+--    root_dir = require'lspconfig'.util.root_pattern(".git", "init.lua"),
+--}
+
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'yaml',
+  callback = function (args)
+    vim.lsp.start({
+      name = 'sigma_ls',
+      cmd = {"/home/m3lk0r/.cache/pypoetry/virtualenvs/sigma-ls-rWJJ-Mzx-py3.11/bin/python", "/home/m3lk0r/Desktop/sigma-ls/main.py"},
+      root_dir = vim.loop.cwd()
+    })
+  end,
+})
+vim.api.nvim_create_user_command("SearchMitre", function(opts)
+    local keyword = opts.args
+    vim.lsp.buf_request(0, "sigma/searchMitre", { keyword = keyword }, function(err, result)
+        if err then
+            vim.notify("Error: " .. err.message, vim.log.levels.ERROR)
+        elseif type(result) ~= "table" then
+            vim.notify("Unexpected response format from LSP server.", vim.log.levels.ERROR)
+        elseif result.error then
+            vim.notify("Error: " .. result.error, vim.log.levels.WARN)
+        elseif result.matches then
+            if #result.matches > 0 then
+                local formatted_results = {}
+                for _, match in ipairs(result.matches) do
+                    table.insert(formatted_results, match.tag .. ": " .. match.description)
+                end
+                vim.notify("MITRE ATT&CK Matches:\n" .. table.concat(formatted_results, "\n"), vim.log.levels.INFO)
+            else
+                vim.notify("No matches found.", vim.log.levels.WARN)
+            end
+        else
+            vim.notify("Unexpected result structure from LSP server.", vim.log.levels.ERROR)
+        end
+    end)
+end, { nargs = 1 })
+
+-- Attach the Sigma LSP to YAML files
+-- lspconfig.sigma_lsp.setup ({})
+
 
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
@@ -301,6 +359,13 @@ vim.cmd [[highlight Cursor guifg=#FF0000 guibg=#FFFFFF]]
 vim.highlight.on_yank({higroup="YankHighlight", timeout=200})
 -- Highlight group for yanked text
 vim.cmd("highlight YankHighlight guibg=#808080 guifg=#ffffff")
+
+-- check if using neovide
+-- Set GUI font for Neovide
+if vim.g.neovide then
+    vim.o.guifont = "FiraMono Nerd Font:h7"
+    vim.g.neovide_cursor_vfx_mode = "torpedo"
+end
 
 -- Autocommand for highlighting yanked text
 vim.api.nvim_exec([[
