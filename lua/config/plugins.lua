@@ -44,10 +44,12 @@ local plugins = {
   {'nvim-tree/nvim-tree.lua',
     dependecies = {'nvim-tree/nvim-web-devicons'}
   },
+  {'nvim-telescope/telescope-ui-select.nvim'},
   {'pop-ecx/sigma_picker.nvim'},
   {'zbirenbaum/copilot.lua',
     cmd = "Copilot",
     event = "InsertEnter"},
+  {'zbirenbaum/copilot-cmp'},
   {'EmranMR/tree-sitter-blade'},
   {
   'stevearc/oil.nvim',
