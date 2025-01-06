@@ -33,8 +33,8 @@ local function highlight_telescope(hl, c)
     fg = c.fg,
   }
   hl.TelescopePreviewTitle = {
-    bg = c.bg,
-    fg = c.bg,
+    bg = c.bg_highlight,
+    fg = c.fg,
   }
   hl.TelescopeResultsTitle = {
     bg = c.bg,
@@ -81,6 +81,7 @@ local plugins = {
   },
   {'nvim-telescope/telescope-ui-select.nvim'},
   {'pop-ecx/sigma_picker.nvim'},
+  {'ThePrimeagen/vim-be-good'},
   {'zbirenbaum/copilot.lua',
     cmd = "Copilot",
     event = "InsertEnter"},
