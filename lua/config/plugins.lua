@@ -57,6 +57,7 @@ local plugins = {
   {'williamboman/mason.nvim'},
   {'williamboman/mason-lspconfig.nvim'},
   {'neovim/nvim-lspconfig'},
+  {'mbbill/undotree'},
   {'nvim-tree/nvim-web-devicons'},
   {'goolord/alpha-nvim',
     dependencies = {'nvim-tree/nvim-web-devicons'}
