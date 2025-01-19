@@ -88,6 +88,7 @@ local plugins = {
     event = "InsertEnter"},
   {'zbirenbaum/copilot-cmp'},
   {'EmranMR/tree-sitter-blade'},
+  {'brenoprata10/nvim-highlight-colors'},
   {
   'stevearc/oil.nvim',
   ---@module 'oil'
