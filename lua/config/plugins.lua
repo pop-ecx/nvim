@@ -83,6 +83,11 @@ local plugins = {
   {'nvim-telescope/telescope-ui-select.nvim'},
   {'pop-ecx/sigma_picker.nvim'},
   {'ThePrimeagen/vim-be-good'},
+  {"NeogitOrg/neogit",
+  dependencies = {
+    "nvim-lua/plenary.nvim",         -- required
+    "sindrets/diffview.nvim"
+  }},
   {'zbirenbaum/copilot.lua',
     cmd = "Copilot",
     event = "InsertEnter"},
