@@ -7,7 +7,7 @@ local options = {
   number = true,
   list = true,
   scrolloff = 10,
-  cursorline = true,
+  cursorline = false,
   termguicolors = true,
 }
 
