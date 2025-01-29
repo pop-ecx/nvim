@@ -23,8 +23,8 @@ vim.keymap.set('n', 'hn', require('harpoon.ui').nav_next)
 vim.keymap.set('n', 'hp', require('harpoon.ui').nav_prev)
 vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>')
 
-vim.keymap.set('n', '<leader>nto', ':NvimTreeOpen<CR>')
-vim.keymap.set('n', '<leader>ntc', ':NvimTreeOpen<CR>')
+vim.keymap.set('n', '<leader>no', ':NvimTreeOpen<CR>')
+vim.keymap.set('n', '<leader>nc', ':NvimTreeClose<CR>')
 
 vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
