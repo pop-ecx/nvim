@@ -19,14 +19,14 @@ section.header.val = {
 -- Custom Buttons
 section.buttons.val = {
   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
+  dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
   dashboard.button("r", "  Recently used files", ":Telescope oldfiles<CR>"),
   dashboard.button("s", "  Settings", ":e $MYVIMRC<CR>"),
-  dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+  dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
 }
 
 -- Custom Footer
-section.footer.val = "Always be yourself...unless you can be batman. Then always be batman " --.. os.date("%A, %d %B %Y")
+section.footer.val = "It's like vscode...but for furries " .. os.date("%A, %d %B %Y")
 
 -- Custom Layout
 config.layout = {
