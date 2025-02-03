@@ -1,7 +1,6 @@
 require("config.options")
 require("config.plugins")
 require("config.keymaps")
-require("config.filetree")
 require("config.mason")
 require("config.lsp")
 require("config.appearance")

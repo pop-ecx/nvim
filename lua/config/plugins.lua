@@ -47,7 +47,6 @@ local function highlight_telescope(hl, c)
 end
 
 local plugins = {
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
       dependencies = { 'nvim-lua/plenary.nvim' }
@@ -77,9 +76,6 @@ local plugins = {
   },
   {'saadparwaiz1/cmp_luasnip'},
   {'rafamadriz/friendly-snippets'},
-  {'nvim-tree/nvim-tree.lua',
-    dependecies = {'nvim-tree/nvim-web-devicons'}
-  },
   {'nvim-telescope/telescope-ui-select.nvim'},
   {'pop-ecx/sigma_picker.nvim'},
   {'ThePrimeagen/vim-be-good'},
