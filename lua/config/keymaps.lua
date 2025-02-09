@@ -5,6 +5,7 @@ vim.keymap.set('n', '<leader>fg', require("telescope.builtin").live_grep)
 vim.keymap.set('n', '<leader>of', require("telescope.builtin").oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set('n', '<leader>sk', require("telescope.builtin").keymaps, { desc = '[S]earch Keymaps ' })
 vim.keymap.set('n', '<leader><leader>', require("telescope.builtin").buffers, { desc = '[] Find existing buffers' })
+vim.keymap.set('n', '<leader>ds', ':Telescope lsp_document_symbols<CR>', {noremap = true, silent=true})
 
 --@ harpoon
 local ui = require("harpoon.ui")
