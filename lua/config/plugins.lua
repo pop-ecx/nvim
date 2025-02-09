@@ -90,6 +90,8 @@ local plugins = {
   {'zbirenbaum/copilot-cmp'},
   {'EmranMR/tree-sitter-blade'},
   {'brenoprata10/nvim-highlight-colors'},
+  {'folke/zen-mode.nvim'},
+  {'folke/twilight.nvim'},
   {
   'stevearc/oil.nvim',
   ---@module 'oil'

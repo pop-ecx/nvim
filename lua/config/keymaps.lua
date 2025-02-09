@@ -50,4 +50,7 @@ vim.keymap.set('n', '<leader>ng', ':Neogit<CR>', { noremap = true, silent = true
 -- @oil
 vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<C-n>", ":lua require('oil.actions').new()<CR>", { desc = "Create new file/directory in Oil" })
-vim.keymap.set("n", "q", ":bd!<CR>", { desc = "Close Oil.nvim buffer" })
+vim.keymap.set("n", "<leader>q", ":bd!<CR>", { desc = "Close Oil.nvim buffer" })
+
+-- @zenmode
+vim.keymap.set("n", "<leader>zm", ":ZenMode", { desc = "Close Oil.nvim buffer" })
