@@ -54,4 +54,4 @@ vim.keymap.set("n", "<C-n>", ":lua require('oil.actions').new()<CR>", { desc = "
 vim.keymap.set("n", "<leader>q", ":bd!<CR>", { desc = "Close Oil.nvim buffer" })
 
 -- @zenmode
-vim.keymap.set("n", "<leader>zm", ":ZenMode", { desc = "Close Oil.nvim buffer" })
+vim.keymap.set("n", "<leader>zm", ":ZenMode<CR>", { desc = "Close Oil.nvim buffer" })
