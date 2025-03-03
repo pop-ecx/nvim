@@ -78,6 +78,7 @@ local plugins = {
   {'rafamadriz/friendly-snippets'},
   {'nvim-telescope/telescope-ui-select.nvim'},
   {'pop-ecx/sigma_picker.nvim'},
+  {'tjdevries/present.nvim'},
   {'ThePrimeagen/vim-be-good'},
   {"NeogitOrg/neogit",
   dependencies = {

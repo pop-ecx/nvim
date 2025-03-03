@@ -26,7 +26,7 @@ section.buttons.val = {
 }
 
 -- Custom Footer
-section.footer.val = "It's like vscode...but for furries " .. os.date("%A, %d %B %Y")
+section.footer.val = "Try to be a good person...and that'll lead you to vim " .. os.date("%A, %d %B %Y")
 
 -- Custom Layout
 config.layout = {
