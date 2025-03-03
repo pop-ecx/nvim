@@ -55,3 +55,12 @@ vim.keymap.set("n", "<leader>q", ":bd!<CR>", { desc = "Close Oil.nvim buffer" })
 
 -- @zenmode
 vim.keymap.set("n", "<leader>zm", ":ZenMode<CR>", { desc = "Close Oil.nvim buffer" })
+
+-- @disable arrow keys
+vim.keymap.set("n", "<Left>", "<Nop>", { silent = true })
+vim.keymap.set("n", "<Down>", "<Nop>", { silent = true })
+vim.keymap.set("n", "<Up>", "<Nop>", { silent = true })
+vim.keymap.set("n", "<Right>", "<Nop>", { silent = true })
+
+-- @base64 decode
+vim.keymap.set('v', '<leader>bd', [[y:lua vim.fn.setreg('"', vim.fn.system('base64 -w 0 --decode', vim.fn.getreg('"')))<cr>gvP]], { noremap = true, silent = true })
