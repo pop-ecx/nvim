@@ -90,6 +90,7 @@ local plugins = {
     event = "InsertEnter"},
   {'zbirenbaum/copilot-cmp'},
   {'EmranMR/tree-sitter-blade'},
+  {'numToStr/FTerm.nvim'},
   {'brenoprata10/nvim-highlight-colors'},
   {'folke/zen-mode.nvim'},
   {'folke/twilight.nvim'},

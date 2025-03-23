@@ -64,3 +64,7 @@ vim.keymap.set("n", "<Right>", "<Nop>", { silent = true })
 
 -- @base64 decode
 vim.keymap.set('v', '<leader>bd', [[y:lua vim.fn.setreg('"', vim.fn.system('base64 -w 0 --decode', vim.fn.getreg('"')))<cr>gvP]], { noremap = true, silent = true })
+
+-- fterm keymaps
+vim.keymap.set('n', '<leader>ft', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<leader>ft', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
