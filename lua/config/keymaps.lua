@@ -67,4 +67,5 @@ vim.keymap.set('v', '<leader>bd', [[y:lua vim.fn.setreg('"', vim.fn.system('base
 
 -- fterm keymaps
 vim.keymap.set('n', '<leader>ft', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<leader>ft', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<leader>fc', '<CMD>lua require("FTerm").close()<CR>')
+vim.keymap.set('t', '<leader>fe', '<CMD>lua require("FTerm").exit()<CR>')
