@@ -6,6 +6,7 @@ vim.keymap.set('n', '<leader>of', require("telescope.builtin").oldfiles, { desc 
 vim.keymap.set('n', '<leader>sk', require("telescope.builtin").keymaps, { desc = '[S]earch Keymaps ' })
 vim.keymap.set('n', '<leader><leader>', require("telescope.builtin").buffers, { desc = '[] Find existing buffers' })
 vim.keymap.set('n', '<leader>ds', ':Telescope lsp_document_symbols<CR>', {noremap = true, silent=true})
+vim.keymap.set('n', '<leader>gf', ':Telescope git_files<CR>', {noremap = true, silent=true})
 
 --@ harpoon
 local ui = require("harpoon.ui")
@@ -73,3 +74,14 @@ vim.keymap.set('v', '<leader>bd', [[y:lua vim.fn.setreg('"', vim.fn.system('base
 vim.keymap.set('n', '<leader>ft', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<leader>fc', '<CMD>lua require("FTerm").close()<CR>')
 vim.keymap.set('t', '<leader>fe', '<CMD>lua require("FTerm").exit()<CR>')
+
+-- neominimap
+vim.keymap.set('n', '<leader>ntt', '<cmd>Neominimap tabToggle<cr>', { desc = "Toggle minimap for current tab" })
+vim.keymap.set('n', '<leader>nc', '<cmd>Neominimap off<cr>', { desc = "Disable global minimap" })
+vim.keymap.set('n', '<leader>nf', '<cmd>Neominimap focus<cr>', { desc = "Focus on minimap" })
+vim.keymap.set('n', '<leader>nu', '<cmd>Neominimap unfocus<cr>', { desc = "Unfocus minimap" })
+
+
+-- handy ones I stole from thePrimeagen
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
