@@ -17,3 +17,4 @@ end
 
 vim.opt.listchars = {}
 vim.g.mapleader = " "
+vim.opt.incsearch = true
