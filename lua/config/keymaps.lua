@@ -84,6 +84,9 @@ vim.keymap.set('n', '<leader>nc', '<cmd>Neominimap off<cr>', { desc = "Disable g
 vim.keymap.set('n', '<leader>nf', '<cmd>Neominimap focus<cr>', { desc = "Focus on minimap" })
 vim.keymap.set('n', '<leader>nu', '<cmd>Neominimap unfocus<cr>', { desc = "Unfocus minimap" })
 
+-- copilot.vim
+vim.api.nvim_set_keymap('i', '<M-CR>', 'copilot#Accept("<CR>")', { expr=true, noremap = true, silent = true })
+vim.g.copilot_no_tab_map = true
 
 -- handy ones I stole from thePrimeagen
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
