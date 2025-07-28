@@ -1,3 +1,6 @@
 local spick = require("sigma_picker")
 spick.setup({})
 vim.keymap.set('n', '<leader>sp', spick.sigma_picker, {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>si", function()
+    require("sigma_picker.installer").install_sigma_target()
+end, { desc = "Install Sigma Target" })

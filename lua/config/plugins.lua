@@ -52,11 +52,11 @@ local plugins = {
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
   {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"},
+  {'nvim-treesitter/nvim-treesitter-context'},
   {'ThePrimeagen/harpoon'},
   {'mason-org/mason.nvim'},
   {'mason-org/mason-lspconfig.nvim'},
   {'neovim/nvim-lspconfig'},
-  {'mbbill/undotree'},
   {'nvim-tree/nvim-web-devicons'},
   {'goolord/alpha-nvim',
     dependencies = {'nvim-tree/nvim-web-devicons'}
@@ -78,20 +78,25 @@ local plugins = {
   {'rafamadriz/friendly-snippets'},
   {'nvim-telescope/telescope-ui-select.nvim'},
   {'pop-ecx/sigma_picker.nvim'},
-  {'tjdevries/present.nvim'},
+  --{
+  --  dir = "~/Desktop/sigma_picker.nvim",
+  --},
   {'ThePrimeagen/vim-be-good'},
-  {"NeogitOrg/neogit",
-  dependencies = {
-    "nvim-lua/plenary.nvim",         -- required
-    "sindrets/diffview.nvim"
-  }},
-  {'zbirenbaum/copilot.lua',
-    cmd = "Copilot",
-    event = "InsertEnter"},
-  {'zbirenbaum/copilot-cmp'},
+  --{'zbirenbaum/copilot.lua',
+  --  cmd = "Copilot",
+  --  event = "InsertEnter"},
+  --{'zbirenbaum/copilot-cmp'},
+  {'github/copilot.vim'},
   {'EmranMR/tree-sitter-blade'},
   {'numToStr/FTerm.nvim'},
   {'brenoprata10/nvim-highlight-colors'},
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
   {'folke/zen-mode.nvim'},
   {'folke/twilight.nvim'},
   {
@@ -112,6 +117,16 @@ local plugins = {
     dependecies = {
       "nvim-treesitter/nvim-treesitter"
     }
+  },
+  {"Isrothy/neominimap.nvim",
+      version = "v3.x.x",
+      lazy = false,
+      init = function()
+      ---@type Neominimap.UserConfig
+      vim.g.neominimap = {
+        auto_enable = false,
+      }
+    end,
   },
   {'lewis6991/gitsigns.nvim',
   opts = {
