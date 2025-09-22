@@ -9,13 +9,18 @@ local options = {
   scrolloff = 10,
   cursorline = false,
   termguicolors = true,
+  listchars = {},
+  incsearch = true,
+  colorcolumn = "80",
+  guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50",
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.opt.listchars = {}
+--vim.opt.listchars = {}
 vim.g.mapleader = " "
-vim.opt.incsearch = true
-vim.opt.winborder = "rounded"
+--vim.opt.incsearch = true
+--vim.opt.colorcolumn = "80"
+--vim.opt.winborder = "rounded"
