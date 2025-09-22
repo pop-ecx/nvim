@@ -73,11 +73,6 @@ vim.keymap.set("n", "<Right>", "<Nop>", { silent = true })
 -- @base64 decode
 vim.keymap.set('v', '<leader>bd', [[y:lua vim.fn.setreg('"', vim.fn.system('base64 -w 0 --decode', vim.fn.getreg('"')))<cr>gvP]], { noremap = true, silent = true })
 
--- fterm keymaps
-vim.keymap.set('n', '<leader>ft', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<leader>fc', '<CMD>lua require("FTerm").close()<CR>')
-vim.keymap.set('t', '<leader>fe', '<CMD>lua require("FTerm").exit()<CR>')
-
 -- neominimap
 vim.keymap.set('n', '<leader>ntt', '<cmd>Neominimap tabToggle<cr>', { desc = "Toggle minimap for current tab" })
 vim.keymap.set('n', '<leader>nc', '<cmd>Neominimap off<cr>', { desc = "Disable global minimap" })
