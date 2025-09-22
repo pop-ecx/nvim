@@ -86,22 +86,10 @@ local plugins = {
   --{
   --  dir = "~/Desktop/sigma_picker.nvim",
   --},
-  {'ThePrimeagen/vim-be-good'},
-  --{'zbirenbaum/copilot.lua',
-  --  cmd = "Copilot",
-  --  event = "InsertEnter"},
-  --{'zbirenbaum/copilot-cmp'},
   {'github/copilot.vim'},
-  {'EmranMR/tree-sitter-blade'},
-  {'numToStr/FTerm.nvim'},
+  --{'EmranMR/tree-sitter-blade'},
+  {'j-hui/fidget.nvim', opts = {}},
   {'brenoprata10/nvim-highlight-colors'},
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
-    opts = {},
-  },
   {'folke/zen-mode.nvim'},
   {'folke/twilight.nvim'},
   {
