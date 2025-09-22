@@ -3,9 +3,8 @@
 
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("zls")
---vim.lsp.enable("pylyzer")
+vim.lsp.enable("pyright")
 vim.lsp.enable("dockerls")
-vim.lsp.enable("clangd")
-vim.lsp.enable("lemminx")
-vim.lsp.enable("bashls")
-vim.lsp.enable("yls")
+vim.lsp.enable("phpactor")
+vim.lsp.enable("superhtml")
+--vim.lsp.enable("yls")
