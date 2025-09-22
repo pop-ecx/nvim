@@ -11,24 +11,19 @@ vim.keymap.set('n', '<leader>fh', function() require("telescope.builtin").help_t
 vim.keymap.set('n', '<leader>gs', function() require("telescope.builtin").git_status() end)
 vim.keymap.set('n', '<leader>pl', function() require("telescope.builtin").planets() end)
 
---@ harpoon
-local ui = require("harpoon.ui")
-vim.keymap.set("n", "<M-1>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<M-2>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<M-3>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<M-4>", function() ui.nav_file(4) end)
-vim.keymap.set("n", "<M-5>", function() ui.nav_file(5) end)
-vim.keymap.set("n", "<M-6>", function() ui.nav_file(6) end)
-vim.keymap.set("n", "<M-7>", function() ui.nav_file(7) end)
-vim.keymap.set("n", "<M-8>", function() ui.nav_file(8) end)
-vim.keymap.set("n", "<M-9>", function() ui.nav_file(9) end)
-vim.keymap.set("n", "<M-H>", function() ui.toggle_quick_menu() end)
+--@ grapple because harpoon2 is f****d
+vim.keymap.set("n", "<M-1>", "<cmd>Grapple select index=1<cr>", { desc = "Tag 1" })
+vim.keymap.set("n", "<M-2>", "<cmd>Grapple select index=2<cr>", { desc = "Tag 2" })
+vim.keymap.set("n", "<M-3>", "<cmd>Grapple select index=3<cr>", { desc = "Tag 3" })
+vim.keymap.set("n", "<M-4>", "<cmd>Grapple select index=4<cr>", { desc = "Tag 4" })
+vim.keymap.set("n", "<M-5>", "<cmd>Grapple select index=5<cr>", { desc = "Tag 5" })
+vim.keymap.set("n", "<M-H>", "<cmd>Grapple toggle_tags<cr>", { desc = "Tags menu" })
 
-require('telescope').load_extension('harpoon')
-vim.keymap.set('n', 'hx', require('harpoon.mark').add_file)
-vim.keymap.set('n', 'hn', require('harpoon.ui').nav_next)
-vim.keymap.set('n', 'hp', require('harpoon.ui').nav_prev)
-vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>')
+----require('telescope').load_extension('harpoon')
+vim.keymap.set('n', '<leader>hx', "<cmd>Grapple toggle<cr>", { desc = "Tag / Untag file" })
+vim.keymap.set('n', 'hn', "<cmd>Grapple cycle_tags next<cr>")
+vim.keymap.set('n', 'hp', "<cmd>Grapple cycle_tags next<cr>")
+--vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>')
 
 --@ lsp
 vim.api.nvim_set_keymap('n', '<leader>lss', ':LspStart<CR>', { noremap = true, silent = true })

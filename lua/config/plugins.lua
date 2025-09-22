@@ -53,7 +53,12 @@ local plugins = {
     },
   {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"},
   {'nvim-treesitter/nvim-treesitter-context'},
-  {'ThePrimeagen/harpoon'},
+  {
+    "cbochs/grapple.nvim",
+    dependencies = {
+        { "nvim-tree/nvim-web-devicons", lazy = true }
+    },
+  },
   {'mason-org/mason.nvim'},
   {'mason-org/mason-lspconfig.nvim'},
   {'neovim/nvim-lspconfig'},
