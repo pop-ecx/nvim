@@ -18,3 +18,5 @@ require("config.zen")
 require("config.twilight")
 require("config.tscontext")
 require("config.fidget")
+require("config.telescope")
+
