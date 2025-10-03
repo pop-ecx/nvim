@@ -10,6 +10,7 @@ vim.keymap.set('n', '<leader>gf', ':Telescope git_files<CR>', {noremap = true, s
 vim.keymap.set('n', '<leader>fh', function() require("telescope.builtin").help_tags() end)
 vim.keymap.set('n', '<leader>gs', function() require("telescope.builtin").git_status() end)
 vim.keymap.set('n', '<leader>pl', function() require("telescope.builtin").planets() end)
+vim.keymap.set('n', '<leader>ps', function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep for > ")}) end)
 
 --@ grapple because harpoon2 is f****d
 vim.keymap.set("n", "<M-1>", "<cmd>Grapple select index=1<cr>", { desc = "Tag 1" })
