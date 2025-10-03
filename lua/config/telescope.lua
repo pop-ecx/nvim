@@ -54,5 +54,17 @@ require('telescope').setup({
             },
             sorting_strategy = 'ascending',
         },
+       lsp_document_symbols  = {
+            layout_config = {
+                prompt_position = 'top',
+            },
+            sorting_strategy = 'ascending',
+        },
+       git_files  = {
+            layout_config = {
+                prompt_position = 'top',
+            },
+            sorting_strategy = 'ascending',
+        },
     },
 })
