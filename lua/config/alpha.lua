@@ -7,26 +7,50 @@ local marginTopPercent = 0.3
 local headerPadding = fn.max({2, fn.floor(fn.winheight(0) * marginTopPercent)})
 
 -- Custom Header
+--section.header.val = {
+--            " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
+--            " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
+--            " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
+--            " ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
+--            " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
+--            " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+--}
+
 section.header.val = {
-            " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
-            " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
-            " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
-            " ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
-            " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
-            " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+              "                    #====================================.-=.       ",
+              "                 .=-.            .%         #:.            -=:.     ",
+              "                .=-.            #@@@:       #@*.             -*.    ",
+              "              .--.            :*@@@@@:      #@@%-.             ==.  ",
+              "              .:.             :=+@@@@@      *@@@%:.             :.  ",
+              "               .-.            . =-@@@@@     =@@@%:.            :=   ",
+              "                .-:.          .  ==@@@@@    =@@@@:.          ::.    ",
+              "                  .=.         .   = %@@@@%  %@@@%:.        :::.     ",
+              "                  .:-.        .   =  @@@@@% %@@@%:        --.       ",
+              "                    .:=.      .   =   %@@@@%-%@@%:       -:.        ",
+              "                     .:-.     .   =    %@@@@%-%@%:     -=.          ",
+              "                       .=-.   .   =     %@@@@@-%%:    -.            ",
+              "                         .-.  =   =      %@@@@@-+    =+.            ",
+              "                          .=- .:  =       *@@@%.    =.              ",
+              "                            .-.. :+        +@.    =:.               ",
+              "                             .=:.               =-.                 ",
+              "                              .-=.             +:.                  ",
+              "                               .:+-.         ++.                    ",
+              "                                 .+=.       *.                      ",
+              "                                  .:=.    =*.                       ",
+              "                                    .+=. +:.                        ",
+              "                                      .=:.                          ",
 }
 
--- Custom Buttons
 section.buttons.val = {
   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
   dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
   dashboard.button("r", "  Recently used files", ":Telescope oldfiles<CR>"),
-  dashboard.button("s", "  Settings", ":e $MYVIMRC<CR>"),
+  --dashboard.button("s", "  Settings", ":e $MYVIMRC<CR>"),
   dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
 }
 
 -- Custom Footer
-section.footer.val = "Try to be a good person...and that'll lead you to vim " .. os.date("%A, %d %B %Y")
+section.footer.val = "In a world of vscodes, be Neovim" --.. os.date("%A, %d %B %Y")
 
 -- Custom Layout
 config.layout = {
