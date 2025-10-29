@@ -13,6 +13,8 @@ local options = {
   incsearch = true,
   colorcolumn = "80",
   guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50",
+  smartindent = true,
+  autoindent = true,
 }
 
 for k, v in pairs(options) do
