@@ -32,7 +32,7 @@ vim.api.nvim_set_keymap('n', '<leader>lst', ':LspStop<CR>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<leader>lsp', ':LspInfo<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true })
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'single'}) end, {})
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
 vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
