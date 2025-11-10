@@ -14,6 +14,10 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-x>'] = cmp.mapping.confirm({ select = true }),
   }),
+  window = {
+    completion = cmp.config.window.bordered(),        -- border around the suggestion list
+    documentation = cmp.config.window.bordered(),     -- border around the documentation popup
+  },
   sources = cmp.config.sources({
     { name = 'nvim_lsp'},
     { name = 'copilot', group_index = 2 },
