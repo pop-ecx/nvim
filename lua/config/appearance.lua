@@ -1,4 +1,8 @@
 require("nvim-web-devicons").setup()
-require("lualine").setup({ options = { theme = "tokyonight" } })
+require("lualine").setup({ options = { theme = "rose-pine" } })
 
-vim.cmd.colorscheme("tokyonight")
+require("rose-pine").setup({
+    disable_background = true,
+    extend_background_behind_borders = true
+})
+vim.cmd.colorscheme("rose-pine-main")
