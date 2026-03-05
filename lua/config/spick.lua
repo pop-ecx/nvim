@@ -4,3 +4,6 @@ vim.keymap.set('n', '<leader>sp', spick.sigma_picker, {noremap = true, silent = 
 vim.keymap.set("n", "<leader>si", function()
     require("sigma_picker.installer").install_sigma_target()
 end, { desc = "Install Sigma Target" })
+vim.keymap.set('n', '<leader>rc', function()
+    require("sigma_picker.installer").refresh_cache()
+end, { desc = "remove sigma cache" })

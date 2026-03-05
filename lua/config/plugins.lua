@@ -84,6 +84,7 @@ local plugins = {
   {'nvim-telescope/telescope-ui-select.nvim'},
   {'pop-ecx/sigma_picker.nvim'},
   --{
+  --  name = "sigma_picker.nvim",
   --  dir = "~/Desktop/sigma_picker.nvim",
   --},
   {'github/copilot.vim'},
