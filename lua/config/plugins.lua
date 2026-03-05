@@ -132,16 +132,10 @@ local plugins = {
       },
     },
   },
-
-  {'folke/tokyonight.nvim',
-    opts = {
-    transparent = true,
-    on_highlights = function(hl, c)
-        highlight_telescope(hl, c)
-      end,
-    styles = {
-      sidebars = "transparent",
-      floats = "transparent",
+  { 'smoka7/multicursors.nvim',
+    branch = 'main',
+    dependencies = {
+      { 'nvimtools/hydra.nvim', branch = 'main' },
     },
   },
 

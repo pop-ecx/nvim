@@ -50,7 +50,7 @@ section.buttons.val = {
 }
 
 -- Custom Footer
-section.footer.val = "In a world of vscodes, be Neovim" --.. os.date("%A, %d %B %Y")
+--section.footer.val = "In a world of vscodes, be Neovim" --.. os.date("%A, %d %B %Y")
 
 -- Custom Layout
 config.layout = {
@@ -64,3 +64,24 @@ config.layout = {
 
 -- Setup Alpha with the custom config
 alpha.setup(config)
+
+-- Function to update footer once Lazy is ready
+local function update_footer()
+  local ok, lazy = pcall(require, "lazy")
+  if not ok then return end
+  local stats = lazy.stats()
+  local ms = math.floor(stats.startuptime + 0.5)
+  section.footer.val = ("⚡ Lazy: %d/%d plugins in %d ms"):format(stats.loaded, stats.count, ms)
+  pcall(vim.cmd.AlphaRedraw)
+end
+
+-- If Lazy has already loaded, update immediately
+if vim.g.lazy_did_setup then
+  update_footer()
+else
+  -- Otherwise, wait for LazyDone event
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyDone",
+    callback = update_footer,
+  })
+end

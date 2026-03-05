@@ -19,4 +19,4 @@ require("config.twilight")
 require("config.tscontext")
 require("config.fidget")
 require("config.telescope")
-
+require("config.multicursors")
