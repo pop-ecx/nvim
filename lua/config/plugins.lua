@@ -112,16 +112,6 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter"
     }
   },
-  {"Isrothy/neominimap.nvim",
-      version = "v3.x.x",
-      lazy = false,
-      init = function()
-      ---@type Neominimap.UserConfig
-      vim.g.neominimap = {
-        auto_enable = false,
-      }
-    end,
-  },
   {'lewis6991/gitsigns.nvim',
   opts = {
       signs = {

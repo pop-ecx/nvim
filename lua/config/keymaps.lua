@@ -69,12 +69,6 @@ vim.keymap.set("n", "<Right>", "<Nop>", { silent = true })
 -- @base64 decode
 vim.keymap.set('v', '<leader>bd', [[y:lua vim.fn.setreg('"', vim.fn.system('base64 -w 0 --decode', vim.fn.getreg('"')))<cr>gvP]], { noremap = true, silent = true })
 
--- neominimap
-vim.keymap.set('n', '<leader>ntt', '<cmd>Neominimap tabToggle<cr>', { desc = "Toggle minimap for current tab" })
-vim.keymap.set('n', '<leader>nc', '<cmd>Neominimap off<cr>', { desc = "Disable global minimap" })
-vim.keymap.set('n', '<leader>nf', '<cmd>Neominimap focus<cr>', { desc = "Focus on minimap" })
-vim.keymap.set('n', '<leader>nu', '<cmd>Neominimap unfocus<cr>', { desc = "Unfocus minimap" })
-
 -- copilot.vim
 vim.api.nvim_set_keymap('i', '<M-CR>', 'copilot#Accept("<CR>")', { expr=true, noremap = true, silent = true })
 vim.g.copilot_no_tab_map = true
