@@ -91,8 +91,6 @@ local plugins = {
   --{'EmranMR/tree-sitter-blade'},
   {'j-hui/fidget.nvim', opts = {}},
   {'brenoprata10/nvim-highlight-colors'},
-  {'folke/zen-mode.nvim'},
-  {'folke/twilight.nvim'},
   {
   'stevearc/oil.nvim',
   ---@module 'oil'

@@ -57,9 +57,6 @@ vim.keymap.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory
 vim.keymap.set("n", "<C-n>", ":lua require('oil.actions').new()<CR>", { desc = "Create new file/directory in Oil" })
 vim.keymap.set("n", "<leader>q", ":bd!<CR>", { desc = "Close Oil.nvim buffer" })
 
--- @zenmode
-vim.keymap.set("n", "<leader>zm", ":ZenMode<CR>", { desc = "Enter the zen" })
-
 -- @disable arrow keys
 vim.keymap.set("n", "<Left>", "<Nop>", { silent = true })
 vim.keymap.set("n", "<Down>", "<Nop>", { silent = true })
