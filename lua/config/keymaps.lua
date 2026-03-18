@@ -41,9 +41,6 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
 vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, {})
 vim.keymap.set('n', 'grn', vim.lsp.buf.rename, {})
 
---@UndotreeToggle
-vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
-
 --@terminal mode
 vim.keymap.set('t', '<C-e>', "<C-\\><C-n><C-w>h",{silent = true})
 --vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
