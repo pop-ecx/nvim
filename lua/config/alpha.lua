@@ -75,13 +75,15 @@ local function update_footer()
   pcall(vim.cmd.AlphaRedraw)
 end
 
--- If Lazy has already loaded, update immediately
-if vim.g.lazy_did_setup then
+-- Safely check if startuptime is already calculated
+local has_lazy, lazy = pcall(require, "lazy")
+if has_lazy and lazy.stats().startuptime > 0 then
   update_footer()
 else
-  -- Otherwise, wait for LazyDone event
+  -- Wait for LazyVimStarted so the timing metrics are fully ready
   vim.api.nvim_create_autocmd("User", {
-    pattern = "LazyDone",
+    pattern = "LazyVimStarted",
+    once = true,
     callback = update_footer,
   })
 end
