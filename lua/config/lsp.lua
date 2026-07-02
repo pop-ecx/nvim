@@ -4,7 +4,7 @@
 vim.lsp.config("zls", {
     settings = {
         zls = {
-            zig_exe_path = "/home/m3lk0r/.cache/zig/p/N-V-__8AAN5NhBR0oTsvnwjPdeNiiDLtEsfXRHd1fv-R3TOv/zig",
+            zig_exe_path = "/home/m3lk0r/.cache/zig/p/N-V-__8AAFFSVRWqblwBIcA-Yqv-u7sbjsJoww8K0mWaHbmJ/zig",
         },
     },
 })
@@ -14,6 +14,18 @@ vim.lsp.config("yls", {
         yls = {
             yls_exe_path = "/home/m3lk0r/.local/share/nvim/mason/bin/yls",
         },
+    },
+})
+
+vim.lsp.config("omnisharp", {
+    cmd = {
+        vim.fn.expand("~/.local/share/nvim/mason/bin/OmniSharp"),
+    },
+    filetypes = { "cs" },
+    root_markers = {
+        "*.sln",
+        "*.csproj",
+        ".git",
     },
 })
 
@@ -38,3 +50,7 @@ vim.lsp.enable("docker_compose_language_service")
 vim.lsp.enable("lemminx")
 vim.lsp.enable("yls")
 vim.lsp.enable("ocamllsp")
+vim.lsp.enable("asm_lsp")
+vim.lsp.enable("powershell_es")
+vim.lsp.enable("bashls")
+vim.lsp.enable("omnisharp")

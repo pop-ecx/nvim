@@ -14,6 +14,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-x>'] = cmp.mapping.confirm({ select = true }),
   }),
+  preselect = cmp.PreselectMode.Item,
   window = {
     completion = cmp.config.window.bordered(),        -- border around the suggestion list
     documentation = cmp.config.window.bordered(),     -- border around the documentation popup

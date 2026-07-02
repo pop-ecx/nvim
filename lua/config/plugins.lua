@@ -11,47 +11,22 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local function highlight_telescope(hl, c)
-  local prompt = c.bg
-  hl.TelescopeNormal = {
-    bg = c.bg,
-    fg = c.fg,
-  }
-  hl.TelescopeBorder = {
-    bg = c.bg,
-    fg = c.bg,
-  }
-  hl.TelescopePromptNormal = {
-    bg = prompt,
-  }
-  hl.TelescopePromptBorder = {
-    bg = prompt,
-    fg = prompt,
-  }
-  hl.TelescopePromptTitle = {
-    bg = c.bg_highlight,
-    fg = c.fg,
-  }
-  hl.TelescopePreviewTitle = {
-    bg = c.bg_highlight,
-    fg = c.fg,
-  }
-  hl.TelescopeResultsTitle = {
-    bg = c.bg,
-    fg = c.bg,
-  }
-  hl.NoiceCmdlinePopupBorder = {
-    bg = c.bg,
-    fg = c.bg,
-  }
-end
-
 local plugins = {
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
-      dependencies = { 'nvim-lua/plenary.nvim' }
+    'nvim-telescope/telescope.nvim', tag = 'v0.2.2',
+      dependencies = { 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter' }
     },
-  {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"},
+  {'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    lazy = false,
+    branch = 'main',
+    opts = {
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+    },
+  },
   {'nvim-treesitter/nvim-treesitter-context'},
   {
     "cbochs/grapple.nvim",
@@ -82,11 +57,11 @@ local plugins = {
   {'saadparwaiz1/cmp_luasnip'},
   {'rafamadriz/friendly-snippets'},
   {'nvim-telescope/telescope-ui-select.nvim'},
-  {'pop-ecx/sigma_picker.nvim'},
-  --{
-  --  name = "sigma_picker.nvim",
-  --  dir = "~/Desktop/sigma_picker.nvim",
-  --},
+  --{'pop-ecx/sigma_picker.nvim'},
+  {
+    name = "sigma_picker.nvim",
+    dir = "~/Desktop/sigma_picker.nvim",
+  },
   {'github/copilot.vim'},
   --{'EmranMR/tree-sitter-blade'},
   {'j-hui/fidget.nvim', opts = {}},
@@ -128,11 +103,7 @@ local plugins = {
       { 'nvimtools/hydra.nvim', branch = 'main' },
     },
   },
-
-  {'rose-pine/neovim',
-  on_highlights = function(hl, c)
-      highlight_telescope(hl, c)
-    end,}
+  {'rose-pine/neovim'},
 }
 
 local opts = {}
