@@ -4,6 +4,8 @@
 vim.lsp.config("zls", {
     settings = {
         zls = {
+            enable_build_on_save = true,
+            build_on_save_step = "check",
             zig_exe_path = "/home/m3lk0r/.cache/zig/p/N-V-__8AAFFSVRWqblwBIcA-Yqv-u7sbjsJoww8K0mWaHbmJ/zig",
         },
     },
